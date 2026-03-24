@@ -32,8 +32,10 @@
           </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
+            Search
+          </button>
         </form>
 
         <div class="ml-3">
@@ -45,17 +47,26 @@
       </div>
     </nav>
 
-    <app-modal :isOpen="isOpenModalCartList" :handleCloseModal="handleCloseModalCartList" />
+    <teleport to="#app">
+      <app-modal :isOpen="isOpenModalCartList" :handleCloseModal="handleCloseModalCartList">
+        <cart-list />
+      </app-modal>
+    </teleport>
   </header>
 </template>
 
 <script>
+import CartList from './CartList.vue';
+
 export default {
   name: "TheHeader",
+  components: {
+    CartList
+  },
   data() {
     return {
       isOpenModalCartList: false,
-    }
+    };
   },
   methods: {
     handleOpenModalCartList() {
@@ -63,15 +74,18 @@ export default {
     },
     handleCloseModalCartList() {
       this.isOpenModalCartList = false;
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style scoped>
 .logo {
   font-weight: bold;
   background: #1c0202;
-  background: linear-gradient(90deg, rgba(28, 2, 2, 1) 0%, rgba(87, 199, 133, 1) 50%, rgba(237, 83, 83, 1) 100%);
+  background: linear-gradient(90deg,
+      rgba(28, 2, 2, 1) 0%,
+      rgba(87, 199, 133, 1) 50%,
+      rgba(237, 83, 83, 1) 100%);
 }
 </style>

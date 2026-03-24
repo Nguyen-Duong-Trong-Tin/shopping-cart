@@ -8,8 +8,7 @@
         </div>
       </div>
       <div class="modal__body">
-        <h1>Content</h1>
-        <button>click me</button>
+        <slot></slot>
       </div>
       <div class="modal__footer">
 
